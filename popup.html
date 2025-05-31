@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  width: 70%;
+  max-width: 500px;
+  border-radius: 15px;
+  position: relative;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    
+
+    <!-- Trigger Button -->
+<button onclick="openModal()">View Details</button>
+
+<!-- Modal -->
+<div id="lehengaModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle">Royal Pink Lehenga</h2>
+<img id="modalImage" src="images/royal-pink-lehenga.jpg" alt="Royal Pink Lehenga" style="width: 200px; border-radius: 10px; margin-bottom: 15px;">
+<p><strong>Price:</strong> ₹<span id="modalPrice">1200</span></p>
+
+    <!-- Size Selection -->
+    <label for="sizeSelect"><strong>Select Size:</strong></label>
+    <select id="sizeSelect">
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>
+      <option value="XL">XL</option>
+    </select>
+
+    <!-- Size Chart -->
+    <br><br>
+    <button onclick="toggleSizeChart()">View Size Chart</button>
+    <div id="sizeChart" style="display:none; margin-top:10px;">
+      <table border="1" style="margin: 0 auto;">
+        <tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th></tr>
+        <tr><td>S</td><td>32"</td><td>26"</td><td>36"</td></tr>
+        <tr><td>M</td><td>34"</td><td>28"</td><td>38"</td></tr>
+        <tr><td>L</td><td>36"</td><td>30"</td><td>40"</td></tr>
+        <tr><td>XL</td><td>38"</td><td>32"</td><td>42"</td></tr>
+      </table>
+    </div>
+
+    <!-- Rental Duration -->
+    <br><br>
+    <label for="durationSelect"><strong>Rental Duration:</strong></label>
+    <select id="durationSelect" onchange="updateReturnDate()">
+      <option value="4">4 Days</option>
+      <option value="8">8 Days</option>
+    </select>
+
+    <!-- Start Date -->
+    <br><br>
+    <label for="startDate"><strong>Start Date:</strong></label>
+    <input type="date" id="startDate" onchange="updateReturnDate()">
+
+    <!-- Return Date -->
+    <br><br>
+    <label><strong>Return Date:</strong></label>
+    <input type="text" id="returnDate" readonly>
+
+    <!-- Place Order -->
+    <br><br>
+    <button onclick="placeOrder()">Place Order</button>
+  </div>
+</div>
+
+
+<script>
+  function openModal(title, imageSrc, price) {
+  document.getElementById('lehengaModal').style.display = 'block';
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalImage').src = imageSrc;
+  document.getElementById('modalPrice').innerText = `₹${price}`;
+}
+
+  function closeModal() {
+    document.getElementById('lehengaModal').style.display = 'none';
+  }
+
+  function toggleSizeChart() {
+    const chart = document.getElementById("sizeChart");
+    chart.style.display = chart.style.display === "none" ? "block" : "none";
+  }
+
+  function updateReturnDate() {
+    const startDate = document.getElementById("startDate").value;
+    const duration = parseInt(document.getElementById("durationSelect").value);
+
+    if (startDate) {
+      const date = new Date(startDate);
+      date.setDate(date.getDate() + duration);
+      document.getElementById("returnDate").value = date.toISOString().split('T')[0];
+    } else {
+      document.getElementById("returnDate").value = "";
+    }
+  }
+
+  function placeOrder() {
+    const size = document.getElementById("sizeSelect").value;
+    const duration = document.getElementById("durationSelect").value;
+    const start = document.getElementById("startDate").value;
+    const returnDate = document.getElementById("returnDate").value;
+
+    if (!start) {
+      alert("Please select a start date.");
+      return;
+    }
+
+    alert(`Order placed:\nSize: ${size}\nDuration: ${duration} days\nStart: ${start}\nReturn: ${returnDate}`);
+  }
+
+  // Close modal if clicked outside
+  window.onclick = function(event) {
+    const modal = document.getElementById('lehengaModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Women's Wear on Rent</title>
+  <!-- <link rel="stylesheet" href="popup.html"> -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeZoomIn {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .animated-heading {
+      animation: slideInLeft 1s ease forwards;
+    }
+
+    .product img {
+      animation: fadeZoomIn 1s ease-in-out forwards;
+    }
+
+    /* Banner Section */
+    .banner {
+      background: url('herher.jpg') center/cover no-repeat;
+      height: 400px;
+      position: relative;
+      color: white;
+    }
+
+    .banner-text {
+      position: absolute;
+      bottom: 150px;
+      right: 150px;
+      padding: 20px 30px;
+      font-size: 45px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .category-dropdown {
+      position: absolute;
+      bottom: 90px;
+      left: 63%;
+      border-radius: 8px;
+      border: 2px solid white;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 3px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .category-dropdown select {
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+    }
+
+    .category-dropdown select option {
+      color: black;
+      background-color: white;
+    }
+
+    .products-section {
+      padding: 50px 40px;
+      position: relative;
+    }
+
+    .products-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+      display: inline-block;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-sort {
+      font-size: 16px;
+    }
+
+    .section-sort select {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 2px solid #888;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .product {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .product img {
+      width: 100%;
+      height: 420px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      background-color: #fff;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .product img:hover {
+      transform: scale(1.07) rotate(1deg);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .product h4 {
+      margin: 10px 0 5px;
+    }
+
+    .product p {
+      color: #444;
+    }
+
+    /* Scroll to Top Button */
+    #scrollBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 22px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      padding: 12px 16px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    #scrollBtn:hover {
+      background-color: #555;
+    }
+  </style>
+  
+
+</head>
+
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-text">Women's Wear on Rent</div>
+    <div class="category-dropdown">
+      <select id="category" onchange="filterByCategory()">
+        <option value="all">All Categories</option>
+        <option value="lehenga">Lehengas</option>
+        <option value="saree">Sarees</option>
+        <option value="partywear">Party Wear</option>
+        <option value="anarkali">Anarkali</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Product Sections -->
+  <div class="products-section" id="lehenga">
+    <div class="section-header">
+      <h2 class="animated-heading">Lehengas</h2>
+      <div class="section-sort">
+        <label>Sort By:</label>
+        <select onchange="sortSection('lehenga', this.value)">
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="a-z">Name: A-Z</option>
+          <option value="z-a">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+    <div class="products" data-category="lehenga">
+      <div class="product">
+        <img src="len3..jpg" alt="Classy Lehengas">
+        <h4>Classy Lehengas</h4>
+        <p>₹2900</p>
+        <button onclick="openModal('Royal Pink Lehenga', 'images/royal-pink-lehenga.jpg', 1200)">View Details</button>
+
+
+      </div>
+      <div class="product">
+        <img src="len2.jpg" alt="Royal Lehenga">
+        <h4>Royal Pink Lehenga</h4>
+        <p>₹3100</p>
+        <!-- <button onclick="openModal()" style="margin-top:10px; padding:8px 12px; background-color:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+  Rent Now
+</button> -->
+<button onclick="openModal()">View Details</button>
+
+      </div>
+      <div class="product">
+        <img src="lehenga1.jpg" alt="Yellow-Blue Lehenga">
+        <h4>Yellow-Blue Lehenga</h4>
+        <p>₹3500</p>
+
+        <button onclick="openModal()" style="margin-top:10px; padding:8px 12px; background-color:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+  Rent Now
+</button>
+
+      </div>
+      <div class="product">
+        <img src="len4.jpg" alt="Patterned Lehenga">
+        <h4>Patterned Lehenga</h4>
+        <p>₹2200</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section" id="saree">
+    <div class="section-header">
+      <h2 class="animated-heading">Sarees</h2>
+      <div class="section-sort">
+        <label>Sort By:</label>
+        <select onchange="sortSection('saree', this.value)">
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="a-z">Name: A-Z</option>
+          <option value="z-a">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+    <div class="products" data-category="saree">
+      <div class="product">
+        <img src="saree3.jpg" alt="Glamorous Saree">
+        <h4>Glamorous Saree</h4>
+        <p>₹1200</p>
+        <button onclick="openModal()" style="margin-top:10px; padding:8px 12px; background-color:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+  Rent Now
+</button>
+
+      </div>
+      <div class="product">
+        <img src="saree2.jpg" alt="Silk Saree">
+        <h4>Silk Copper Enhanced Saree</h4>
+        <p>₹999</p>
+      </div>
+      <div class="product">
+        <img src="saree1.jpg" alt="Silk Saree">
+        <h4>Silk Saree</h4>
+        <p>₹1700</p>
+        <button onclick="openModal()" style="margin-top:10px; padding:8px 12px; background-color:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+        Rent Now
+        </button>
+
+      </div>
+      <div class="product">
+        <img src="saree4.jpg" alt="Silk Saree">
+        <h4>Silk Silver Enhanced Saree</h4>
+        <p>₹1100</p>
+        <button onclick="openModal()" style="margin-top:10px; padding:8px 12px; background-color:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+  Add To Cart
+</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section" id="partywear">
+    <div class="section-header">
+      <h2 class="animated-heading">Party Wear</h2>
+      <div class="section-sort">
+        <label>Sort By:</label>
+        <select onchange="sortSection('partywear', this.value)">
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="a-z">Name: A-Z</option>
+          <option value="z-a">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+    <div class="products" data-category="partywear">
+      <div class="product">
+        <img src="party3.jpg" alt="Flower Party Wear">
+        <h4>Flower Party Wear</h4>
+        <p>₹900</p>
+      </div>
+      <div class="product">
+        <img src="party2.jpg" alt="Golden Gown">
+        <h4>Golden Gown</h4>
+        <p>₹1100</p>
+      </div>
+      <div class="product">
+        <img src="party1.jpg" alt="Silk Saree">
+        <h4>Leaf Theme Beautiful Dress</h4>
+        <p>₹850</p>
+      </div>
+      <div class="product">
+        <img src="party4.jpg" alt="Silk Saree">
+        <h4>Navy Blue Net Dress</h4>
+        <p>₹850</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-section" id="anarkali">
+    <div class="section-header">
+      <h2 class="animated-heading">Anarkali</h2>
+      <div class="section-sort">
+        <label>Sort By:</label>
+        <select onchange="sortSection('anarkali', this.value)">
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="a-z">Name: A-Z</option>
+          <option value="z-a">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+    <div class="products" data-category="anarkali">
+      <div class="product">
+        <img src="an3.jpg" alt="Elegant Anarkali Set">
+        <h4>Elegant Anarkali Set</h4>
+        <p>₹600</p>
+      </div>
+      <div class="product">
+        <img src="an2.jpg" alt="Blue Anarkali">
+        <h4>Blue Anarkali</h4>
+        <p>₹700</p>
+      </div>
+      <div class="product">
+        <img src="an1.jpg" alt="Silk Saree">
+        <h4>Green Anarkali</h4>
+        <p>₹850</p>
+      </div>
+      <div class="product">
+        <img src="an4.jpg" alt="Silk Saree">
+        <h4>Full Sleeves Anarkali</h4>
+        <p>₹850</p>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll to Top Button -->
+  <button onclick="scrollToTop()" id="scrollBtn" title="Go to top">↑</button>
+
+  <script>
+    function filterByCategory() {
+      const category = document.getElementById('category').value;
+      if (category === 'all') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const section = document.getElementById(category);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+
+    function sortSection(sectionId, criteria) {
+      const section = document.querySelector([data-category,"${sectionId}"]);
+      const products = Array.from(section.querySelectorAll(".product"));
+
+      products.sort((a, b) => {
+        const nameA = a.querySelector("h4").innerText.toLowerCase();
+        const nameB = b.querySelector("h4").innerText.toLowerCase();
+        const priceA = parseInt(a.querySelector("p").innerText.replace("₹", ""));
+        const priceB = parseInt(b.querySelector("p").innerText.replace("₹", ""));
+
+        switch (criteria) {
+          case "low-high": return priceA - priceB;
+          case "high-low": return priceB - priceA;
+          case "a-z": return nameA.localeCompare(nameB);
+          case "z-a": return nameB.localeCompare(nameA);
+        }
+      });
+
+      section.innerHTML = "";
+      products.forEach(product => section.appendChild(product));
+    }
+    // Show/hide the scroll button
+    window.onscroll = function () {
+      const scrollBtn = document.getElementById("scrollBtn");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    // Scroll smoothly to top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+  </script>
+ <!-- Product Order Modal -->
+ <div id="orderModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:10px; width:90%; max-width:500px; position:relative;">
+    <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;">&times;</span>
+    <h3>Rent Now</h3>
+    
+    <label>Start Date:</label>
+    <input type="date" id="startDate" onchange="updateReturnDate()" style="width:100%; padding:8px;"><br><br>
+
+    <label>Rental Duration:</label>
+    <select id="rentalDuration" onchange="updateReturnDate()" style="width:100%; padding:8px;">
+      <option value="4">4 Days</option>
+      <option value="8">8 Days</option>
+    </select><br><br>
+
+    <label>Return Date:</label>
+    <input type="text" id="returnDate" readonly style="width:100%; padding:8px;"><br><br>
+
+    <label>Size:</label>
+    <select style="width:100%; padding:8px;">
+      <option value="S">Small</option>
+      <option value="M">Medium</option>
+      <option value="L">Large</option>
+      <option value="XL">Extra Large</option>
+    </select><br><br>
+
+    <button onclick="placeOrder()" style="width:100%; padding:10px; background-color:#333; color:white; border:none; border-radius:5px;">
+      Add To Cart
+    </button>
+  </div>
+</div>
+<script>
+  function openModal() {
+    document.getElementById('orderModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('orderModal').style.display = 'none';
+  }
+
+  function updateReturnDate() {
+    const startDate = document.getElementById('startDate').value;
+    const duration = parseInt(document.getElementById('rentalDuration').value);
+    if (startDate) {
+      const start = new Date(startDate);
+      start.setDate(start.getDate() + duration);
+      const returnDate = start.toISOString().split('T')[0];
+      document.getElementById('returnDate').value = returnDate;
+    }
+  }
+
+  function placeOrder() {
+    alert("Your order has been placed!");
+    closeModal();
+  }
+</script> 
+</body>
+</html>
