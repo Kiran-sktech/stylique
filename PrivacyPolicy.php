@@ -8,47 +8,180 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    body {
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      color: #333;
-      line-height: 1.6;
     }
-    h2 {
-      font-weight: 600;
-      color: #222;
-      border-bottom: 2px solid #ff4081;
-      padding-bottom: 6px;
-      margin-bottom: 20px;
+
+    /* Header Styling */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #a9ba9d ;
+      padding: 15px 30px;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #800020;
+      /* Stylish deep purple */
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+
+
+    /* Navigation Bar */
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f4a261;
+    }
+
+    nav ul li img {
+      height: 50px;
+      cursor: pointer;
+    }
+
+    /* Dropdown Styling */
+    select {
+      border: none;
+      background: transparent;
+      color: black;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    /* nav end */
+
+    /* content */
+  .privacy-box {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .privacy-box h2,
+  .privacy-box h3 {
+    color: #800020;
+    margin-top: 25px;
+    margin-bottom: 12px;
+  }
+
+  .privacy-box h2 {
+    font-size: 28px;
+  }
+
+  .privacy-box h3 {
+    font-size: 20px;
+  }
+
+  .privacy-box p,
+  .privacy-box ul,
+  .privacy-box li {
+    color: #000;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .privacy-box ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .privacy-box a {
+    color: #800020;
+    text-decoration: underline;
+  }
+
+  .privacy-box strong {
+    font-weight: bold;
+  }
+
+     /* footer */
+    footer {
+      background-color: #a9ba9d;
+      color: black;
+      padding: 20px;
       text-align: center;
     }
-    h3 {
-      font-weight: 600;
-      margin-top: 30px;
-      color: #444;
-    }
-    p, ul {
-      margin-top: 10px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .footer-section a {
-            text-decoration: none;
-            color: inherit;
-        }
 
-        .footer-section a h3 {
-            margin: 0;
-        }
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      width: 22%;
+      padding: 10px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+    }
+
+    .footer-section {
+      width: 22%;
+      padding: 10px;
+      cursor: pointer;
+      /* Makes the section clickable */
+      transition: background 0.3s;
+    }
+
+    .footer-section:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-section a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-section a h3 {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
     <header>
-        <div class="logo">ClothRent</div>
+        <div class="logo">STYLIQUE</div>
         <nav>
             <ul>
                 <li><a href="main.php">Home</a></li>
@@ -79,6 +212,7 @@
             </ul>
         </nav>
     </header>
+ <div class="privacy-box">
   <h2>PRIVACY POLICY</h2>
 
   <p>At <strong>Stylique</strong>, we value your privacy. This policy outlines how we collect, use, store, and protect your personal information when you interact with our website or services.</p>
@@ -122,11 +256,12 @@
   <p>This Privacy Policy may be updated as needed. We recommend reviewing it periodically to stay informed.</p>
 
   <h3>Contact Us</h3>
-  <strong>Email:</strong> <a href="mailto:contact@thestylease.com">contact@thestylique.com</a><br/>
+  <p><strong>Email:</strong> <a href="mailto:contact@thestylique.com">contact@thestylique.com</a><br/>
   <strong>Phone:</strong> 08459515366 / 09145251934<br />
-  <strong>Address:</strong> 18/ [2 A 2] 2 ,Pratap Nagar , Opp.SRP Camp Vijapur Road,
-            Solapur, Maharashtra, India.
-            Pin code: 413008</p>
+  <strong>Address:</strong> 18/ [2 A 2] 2, Pratap Nagar, Opp. SRP Camp, Vijapur Road,<br />
+  Solapur, Maharashtra, India. Pin code: 413008</p>
+</div>
+
   <footer>
   <div class="footer-container">
     <div class="footer-section" onclick="navigateTo('cancel.html')">

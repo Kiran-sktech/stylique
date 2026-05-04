@@ -9,14 +9,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+     /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     /* Header Styling */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: white;
+      background-color: #a9ba9d ;
       padding: 15px 30px;
     }
+
+    /* Logo Styling */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #800020;
+      /* Stylish deep purple */
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+
+
     /* Navigation Bar */
     nav ul {
       list-style: none;
@@ -34,66 +56,7 @@
       color: black;
       font-size: 18px;
       transition: 0.3s;
-        }
-
-      body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #f4a261 100%);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      color: #222;
-      }
-      /* Remove orange color and use a neutral accent */
-      h2 {
-        color: #2a9d8f;
-      }
-
-      ol li strong {
-        color: #2a9d8f;
-      }
-
-      nav ul li a:hover {
-        color: #2a9d8f;
-      }
-        h2 {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: #f4a261;
-      letter-spacing: 1px;
-        }
-
-        ol {
-      max-width: 700px;
-      margin: 40px auto 60px auto;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      padding: 32px 36px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-        }
-
-        ol li {
-      margin-bottom: 18px;
-      padding-left: 4px;
-        }
-
-        ol li strong {
-      color: #e76f51;
-        }
-
-        a {
-      color: #2a9d8f;
-      transition: color 0.2s;
-        }
-
-        a:hover {
-      color: #e76f51;
-      text-decoration: underline;
-        }
+    }
 
     nav ul li a:hover {
       color: #f4a261;
@@ -103,10 +66,60 @@
       height: 50px;
       cursor: pointer;
     }
-    /* footer */
+
+    /* Dropdown Styling */
+    select {
+      border: none;
+      background: transparent;
+      color: black;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    /* nav end */
+    
+    /* content */
+  .cancellation-policy-box {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .cancellation-policy-box h2 {
+    color: #800020;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .cancellation-policy-box ol {
+    padding-left: 20px;
+  }
+
+  .cancellation-policy-box li {
+    color: #000;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .cancellation-policy-box a {
+    color: #800020;
+    text-decoration: underline;
+  }
+
+  .cancellation-policy-box li strong {
+    font-weight: bold;
+  }
+
+
+     /* footer */
     footer {
-      background-color: #333;
-      color: white;
+      background-color: #a9ba9d;
+      color: black;
       padding: 20px;
       text-align: center;
     }
@@ -160,7 +173,7 @@
 
 <body>
   <header>
-    <div class="logo">ClothRent</div>
+    <div class="logo">STYLIQUE</div>
     <nav>
       <ul>
         <li><a href="main.php">Home</a></li>
@@ -191,6 +204,7 @@
       </ul>
     </nav>
   </header>
+  <div class="cancellation-policy-box">
   <h2>CANCELLATION POLICY</h2>
   <ol>
     <li><strong>100% Refund:</strong> If you cancel your order <strong>7 or more days</strong> before the scheduled
@@ -211,6 +225,8 @@
     <li><strong>How to Cancel:</strong> To cancel an order, please email us at <a
         href="mailto:contact@stylique.com">contact@stylique.com</a> with your order details.</li>
   </ol>
+</div>
+
   <footer>
     <div class="footer-container">
       <div class="footer-section" onclick="navigateTo('cancel.html')">

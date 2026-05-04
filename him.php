@@ -26,11 +26,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
+        /* General Reset */
+        * {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f9f9f9;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #a9ba9d;
+            padding: 15px 30px;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #800020;
+            /* Stylish deep purple */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+
+        /* Navigation Bar */
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f4a261;
+        }
+
+        nav ul li img {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        /* Dropdown Styling */
+        select {
+            border: none;
+            background: transparent;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* nav end   */
 
         /* Animations */
         @keyframes slideInLeft {
@@ -67,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
         /* Banner Section */
         .banner {
-            background: url('forhim.jpg') center/cover no-repeat;
+            background: url('images/him.webp') center/cover no-repeat;
             height: 400px;
             position: relative;
             color: white;
@@ -201,7 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             background-color: #555;
         }
 
-         /*cart*/
+        /*cart*/
         .cart-item {
             display: flex;
             justify-content: space-between;
@@ -223,7 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         }
 
         /* for pop up */
-         .modal-overlay {
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -299,6 +363,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             background-color: #444;
         }
 
+        /* footer */
+        footer {
+            background-color: #a9ba9d;
+            color: black;
+            padding: 20px;
+            margin: 0%;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            width: 22%;
+            padding: 10px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+        }
+
+        .footer-section {
+            width: 22%;
+            padding: 10px;
+            cursor: pointer;
+            /* Makes the section clickable */
+            transition: background 0.3s;
+        }
+
+        .footer-section:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
         .footer-section a {
             text-decoration: none;
             color: inherit;
@@ -312,7 +421,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 <body>
     <header>
-        <div class="logo">ClothRent</div>
+        <div class="logo">STYLIQUE</div>
         <nav>
             <ul>
                 <li><a href="main.php">Home</a></li>
@@ -332,12 +441,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                         <i class="fa fa-sign-in-alt" style="font-size: 28px;"></i>
                     </a>
                 </li>
-                <!-- <li>
-                  <a href="cart.php" title="Cart" style="display: flex; align-items: center;">
-                    Cart Icon (Font Awesome)
-                    <i class="fa fa-shopping-cart" style="font-size: 28px;"></i>
-                  </a>
-                </li> -->
                 <!-- cart further added things -->
                 <li style="position: relative;">
                     <a href="javascript:void(0);" title="Cart" onclick="toggleCartDropdown()"
@@ -382,40 +485,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="wedding">
             <div class="product">
-                <img src="wed1.png" alt="Embroidered Sherwaani">
+                <img src="images/wed1.png" alt="Embroidered Sherwaani">
                 <h4>Embroidered Sherwani</h4>
                 <p>₹8600</p>
-                <button onclick="openModal('Classy Lehengas', 'wed1.jpg')"
+                <button onclick="openModal('Embroidered Sherwani', 'wed1.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="wed2.png" alt="Classic Black Achkan">
+                <img src="images/wed2.png" alt="Classic Black Achkan">
                 <h4>Classic Black Achkan</h4>
                 <p>₹6100</p>
-                <button onclick="openModal('Classy Lehengas', 'wed2.jpg')"
+                <button onclick="openModal('Classic Black Achkan', 'wed2.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="wed3.png" alt="South Indian Groom Set">
+                <img src="images/wed3.png" alt="South Indian Groom Set">
                 <h4>South Indian Groom Set</h4>
                 <p>₹7500</p>
-                <button onclick="openModal('Classy Lehengas', 'wed3.png')"
+                <button onclick="openModal('South Indian Groom Set', 'wed3.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="wed4.png" alt="Patterned Velvet Sherwani">
+                <img src="images/wed4.png" alt="Patterned Velvet Sherwani">
                 <h4>Patterned Velvet Sherwani</h4>
                 <p>₹6200</p>
-                <button onclick="openModal('Classy Lehengas', 'wed4.png')"
+                <button onclick="openModal('Patterned Velvet Sherwani', 'wed4.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
@@ -439,41 +542,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="engagement">
             <div class="product">
-                <img src="eng1.png" alt="Waistcoat Kurt">
+                <img src="images/eng1.png" alt="Waistcoat Kurt">
                 <h4>Waistcoat Kurta</h4>
                 <p>₹5200</p>
-                <button onclick="openModal('Classy Lehengas', 'eng1.png')"
+                <button onclick="openModal('Waistcoat Kurta', 'eng1.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="eng2.png" alt="Dusty Rose Nehru Jacket and Kurta">
+                <img src="images/eng2.png" alt="Dusty Rose Nehru Jacket and Kurta">
                 <h4>Dusty Rose Nehru Jacket and Kurta</h4>
                 <p>₹5999</p>
-                <button onclick="openModal('Classy Lehengas', 'eng2.png')"
+                <button onclick="openModal('Dusty Rose Nehru Jacket and Kurta', 'eng2.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="eng3.png" alt="Rust Floral Nehru Jacke">
+                <img src="images/eng3.png" alt="Rust Floral Nehru Jacke">
                 <h4>Rust Floral Nehru Jacket</h4>
                 <p>₹4700</p>
-                <button onclick="openModal('Classy Lehengas', 'eng3.png')"
+                <button onclick="openModal('Rust Floral Nehru Jacket', 'eng3.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="eng4.png" alt="Silk Saree">
+                <img src="images/eng4.png" alt="Silk Saree">
                 <h4>Jodhpuri Kurta</h4>
                 <p>₹5100</p>
-                <button onclick="openModal('Classy Lehengas', 'eng4.png')"
-                style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
+                <button onclick="openModal('Jodhpuri Kurta', 'eng4.png')"
+                    style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
@@ -496,40 +599,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="reception">
             <div class="product">
-                <img src="re1.png" alt="Black Silk Jacket Set with Resham Embroidery">
+                <img src="images/re1.png" alt="Black Silk Jacket Set with Resham Embroidery">
                 <h4>Black Silk Jacket Set with Resham Embroidery</h4>
                 <p>₹5800</p>
-                <button onclick="openModal('Classy Lehengas', 're1.png')"
+                <button onclick="openModal('Black Silk Jacket Set with Resham Embroidery', 're1.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="re2.png" alt="Linen Satin Tuxedo">
+                <img src="images/re2.png" alt="Linen Satin Tuxedo">
                 <h4>Linen Satin Tuxedo</h4>
                 <p>₹7100</p>
-                <button onclick="openModal('Classy Lehengas', 're2.png')"
+                <button onclick="openModal('Linen Satin Tuxedo', 're2.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="re3.png" alt="Ivory Sherwani">
+                <img src="images/re3.png" alt="Ivory Sherwani">
                 <h4>Ivory Sherwani</h4>
                 <p>₹850</p>
-                <button onclick="openModal('Classy Lehengas', 're3.png')"
-                    style="margin-top: 10px; padding: 10px 20px; backpngground: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
+                <button onclick="openModal('Ivory Sherwani', 're3.png')"
+                    style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
+               
             </div>
             <div class="product">
-                <img src="re4.png" alt="Pastel bandhgala">
+                <img src="images/re4.png" alt="Pastel bandhgala">
                 <h4>Pastel bandhgala</h4>
                 <p>₹4650</p>
-                <button onclick="openModal('Classy Lehengas', 're4.png')"
+                <button onclick="openModal('Pastel bandhgala', 're4.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
@@ -553,40 +657,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="partywear">
             <div class="product">
-                <img src="pt1.png" alt="Philocaly Wine Bandhgala">
+                <img src="images/pt1.png" alt="Philocaly Wine Bandhgala">
                 <h4>Philocaly Wine Bandhgala</h4>
                 <p>₹4600</p>
-                <button onclick="openModal('Classy Lehengas', 'pt1.png')"
+                <button onclick="openModal('Philocaly Wine Bandhgala', 'pt1.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="pt2.png" alt="Polinosic Jodhpuri Set">
+                <img src="images/pt2.png" alt="Polinosic Jodhpuri Set">
                 <h4>Polinosic Jodhpuri Set</h4>
                 <p>₹4700</p>
-                <button onclick="openModal('Classy Lehengas', 'pt2.png')"
+                <button onclick="openModal('Polinosic Jodhpuri Set', 'pt2.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="pt3.png" alt="Hand-embroidered finesse">
+                <img src="images/pt3.png" alt="Hand-embroidered finesse">
                 <h4>Hand-embroidered finesse</h4>
                 <p>₹7550</p>
-                <button onclick="openModal('Classy Lehengas', 'pt3.png')"
+                <button onclick="openModal('Hand-embroidered finesse', 'pt3.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="pt4.png" alt="Sage Green Blazer & Formal pants">
+                <img src="images/pt4.png" alt="Sage Green Blazer & Formal pants">
                 <h4>Sage Green Blazer & Formal pants</h4>
                 <p>₹6850</p>
-                <button onclick="openModal('Classy Lehengas', 'pt4.png')"
+                <button onclick="openModal('Sage Green Blazer & Formal pants', 'pt4.png')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
                     onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now

@@ -8,46 +8,170 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    body {
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.7;
     }
-    h1 {
-      font-weight: 600;
-      color: #222;
-      margin-bottom: 40px;
-      text-align: center;
-      border-bottom: 3px solid #ff4081;
-      padding-bottom: 10px;
-    }
-    h2 {
-      font-weight: 600;
-      color: #ff4081;
-      margin-top: 40px;
-      margin-bottom: 15px;
-    }
-    p {
-      margin-bottom: 20px;
-      font-size: 1rem;
-    }
-    .footer-section a {
-            text-decoration: none;
-            color: inherit;
-        }
 
-        .footer-section a h3 {
-            margin: 0;
-        }
+    /* Header Styling */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #a9ba9d ;
+      padding: 15px 30px;
+    }
+
+    /* Logo Styling */
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #800020;
+      /* Stylish deep purple */
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+
+
+    /* Navigation Bar */
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f4a261;
+    }
+
+    nav ul li img {
+      height: 50px;
+      cursor: pointer;
+    }
+
+    /* Dropdown Styling */
+    select {
+      border: none;
+      background: transparent;
+      color: black;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    /* nav end */
+
+    /* content */
+  .terms-box {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .terms-box h1,
+  .terms-box h2 {
+    color: #800020;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .terms-box h1 {
+    font-size: 30px;
+  }
+
+  .terms-box h2 {
+    font-size: 22px;
+  }
+
+  .terms-box p {
+    color: #000;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .terms-box strong {
+    font-weight: bold;
+  }
+
+
+     /* footer */
+    footer {
+      background-color: #a9ba9d;
+      color: black;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      width: 22%;
+      padding: 10px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      margin-top: 20px;
+    }
+
+    .footer-section {
+      width: 22%;
+      padding: 10px;
+      cursor: pointer;
+      /* Makes the section clickable */
+      transition: background 0.3s;
+    }
+
+    .footer-section:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-section a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer-section a h3 {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
     <header>
-        <div class="logo">ClothRent</div>
+        <div class="logo">STYLIQUE</div>
         <nav>
             <ul>
                 <li><a href="main.php">Home</a></li>
@@ -78,6 +202,7 @@
             </ul>
         </nav>
     </header>
+  <div class="terms-box">
   <h1>Terms and Conditions</h1>
 
   <h2>Introduction</h2>
@@ -103,6 +228,8 @@
 
   <h2>Contact Us</h2>
   <p>If you have any questions or concerns about these Terms and Conditions, please reach out to us at <strong>contact@stylique.com</strong> or call <strong>+91 8459515366 / +91 9145251934</strong>. We are here to assist you.</p>
+</div>
+
   <footer>
   <div class="footer-container">
     <div class="footer-section" onclick="navigateTo('cancel.html')">

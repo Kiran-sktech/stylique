@@ -22,7 +22,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: white;
+      background-color: #a9ba9d ;
       padding: 15px 30px;
     }
 
@@ -31,7 +31,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       font-weight: 700;
-      color: #4B0082;
+      color: #800020;
       /* Stylish deep purple */
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -76,7 +76,7 @@
       cursor: pointer;
       padding: 5px;
     }
-
+    /* nav end */
     select option {
       color: black;
     }
@@ -132,13 +132,13 @@
     /* feature */
     .fe {
       margin: 20px;
-      /* padding:10px ; */
+      padding:10px ;
     }
 
     /* footer */
     footer {
-      background-color: #333;
-      color: white;
+      background-color: #a9ba9d;
+      color: black;
       padding: 20px;
       text-align: center;
     }
@@ -196,14 +196,14 @@
     <div class="logo">STYLIQUE</div>
     <nav>
       <ul>
-        <li><a href="main.php">Home</a></li>
+        <li><a href="TheStylique.php">Home</a></li>
         <li><a href="AboutUs.php">About Us</a></li>
         <li><a href="register.php">Register</a></li>
         <li>
           <select name="option" id="dropdown" onchange="location= this.value;">
             <option value="Categories" disabled selected>Categories</option>
             <option value="her.php">For Her</option>
-            <option value="ForHim.php">For Him</option>
+            <option value="Him.php">For Him</option>
           </select>
         </li>
         <li><a href="ContactUs.php">Contact Us</a></li>
@@ -227,7 +227,7 @@
   <!-- the main pic -->
   <div>
     <div style="position: relative; width: 100%;">
-      <img src="main.webp" style="width: 100%; display: block;">
+      <img src="images/main.webp" style="width: 100%; display: block;">
       <div
         style="position: absolute; top: 50%; right: 5%; transform: translateY(-50%); background:transparent; padding: 50px 32px; border-radius: 12px; color: #fff; max-width: 420px; text-align: right; box-shadow: 0 4px 24px rgba(0,0,0,0.18);">
         <h1 style="font-size: 2.5em; margin-bottom: 12px; font-weight: bold;">Welcome to THE STYLIQUE</h1>
@@ -241,11 +241,11 @@
   <!-- for him gor her -->
   <div class="container">
     <div class="box">
-      <a href="herdemo.php"><img src="her.jpg" alt="Image 1"></a>
+      <a href="her.php"><img src="images/her.jpg" alt="Image 1"></a>
       <h1 class="text-overlay">For Her</h1>
     </div>
     <div class="box">
-      <a href="forhim.php"><img src="1him.jpg" alt="Image 2"></a>
+      <a href="him.php"><img src="images/1him.jpg" alt="Image 2"></a>
       <h1 class="boy">For him</h1>
     </div>
   </div>

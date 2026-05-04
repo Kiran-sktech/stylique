@@ -83,7 +83,7 @@ $result = $stmt->get_result();
         <?php if ($result->num_rows === 0): ?>
             <div style="text-align:center; margin-top:40px;">
                 <p style="font-size:1.2em; color:#888;">No orders found.</p>
-                <a href="cart.php" style="display:inline-block; margin-top:18px; padding:12px 28px; 
+                <a href="her.php" style="display:inline-block; margin-top:18px; padding:12px 28px; 
                 background:#4f6cff; color:#fff; border-radius:6px; text-decoration:none; font-weight:600; letter-spacing:0.5px; transition:background 0.2s;">Start Renting Now</a>
             </div>
         <?php else: ?>

@@ -28,6 +28,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #a9ba9d;
+            padding: 15px 30px;
+        }
+
+        /* Logo Styling */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #800020;
+            /* Stylish deep purple */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+
+        /* Navigation Bar */
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f4a261;
+        }
+
+        nav ul li img {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        /* Dropdown Styling */
+        select {
+            border: none;
+            background: transparent;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* nav end   */
+
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
@@ -69,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
         /* Banner Section */
         .banner {
-            background: linear-gradient( rgba(0,0,0,0.5)), url('bg_of_her.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.5)), url('images/bg_of_her.jpg') center/cover no-repeat;
             height: 400px;
             position: relative;
             color: white;
@@ -230,7 +300,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 
         /* for pop up */
-         .modal-overlay {
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -305,7 +375,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         .modal-content button:hover {
             background-color: #444;
         }
-/* footer */
+
+
+        /* footer */
+        footer {
+            background-color: #a9ba9d;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            width: 22%;
+            padding: 10px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+        }
+
+        .footer-section {
+            width: 22%;
+            padding: 10px;
+            cursor: pointer;
+            /* Makes the section clickable */
+            transition: background 0.3s;
+        }
+
+        .footer-section:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
         .footer-section a {
             text-decoration: none;
             color: inherit;
@@ -383,54 +498,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="lehenga">
             <div class="product">
-                <img src="len3.jpg" alt="Classy Lehengas">
+                <img src="images/len3.jpg" alt="Classy Lehengas">
                 <h4>Classy Lehengas</h4>
                 <p>₹2900</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Classy Lehengas', 'len3.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';"
-                >
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
 
             </div>
             <div class="product">
-                <img src="len2.jpg" alt="Royal Lehenga">
+                <img src="images/len2.jpg" alt="Royal Lehenga">
                 <h4>Royal Pink Lehenga</h4>
                 <p>₹3100</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Royal Pink Lehenga', 'len2.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
 
             </div>
             <div class="product">
-                <img src="len1.jpg" alt="Yellow-Blue Lehenga">
+                <img src="images/len1.jpg" alt="Yellow-Blue Lehenga">
                 <h4>Yellow-Blue Lehenga</h4>
                 <p>₹3500</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Yellow-Blue Lehenga', 'len1.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
 
             </div>
             <div class="product">
-                <img src="len4.jpg" alt="Patterned Lehenga">
+                <img src="images/len4.jpg" alt="Patterned Lehenga">
                 <h4>Patterned Lehenga</h4>
                 <p>₹2200</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Patterned Lehenga', 'len4.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
@@ -452,50 +558,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="saree">
             <div class="product">
-                <img src="saree3.jpg" alt="Glamorous Saree">
+                <img src="images/saree3.jpg" alt="Glamorous Saree">
                 <h4>Glamorous Saree</h4>
                 <p>₹1200</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Glamorous Saree', 'saree3.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';" >
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="saree2.jpg" alt="Silk Saree">
+                <img src="images/saree2.jpg" alt="Silk Saree">
                 <h4>Silk Copper Enhanced Saree</h4>
                 <p>₹999</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Silk Copper Enhanced Saree', 'saree2.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="saree1.jpg" alt="Silk Saree">
+                <img src="imges/saree1.jpg" alt="Silk Saree">
                 <h4>Silk Saree</h4>
                 <p>₹1700</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Silk Saree', 'saree1.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="saree4.jpg" alt="Silk Saree">
+                <img src="images/saree4.jpg" alt="Silk Saree">
                 <h4>Silk Silver Enhanced Saree</h4>
                 <p>₹1100</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Silk Silver Enhanced Saree', 'saree4.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';" >
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
@@ -517,50 +615,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="partywear">
             <div class="product">
-                <img src="party3.jpg" alt="Flower Party Wear">
+                <img src="images/party3.jpg" alt="Flower Party Wear">
                 <h4>Flower Party Wear</h4>
                 <p>₹900</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Flower Party Wear', 'party3.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="party2.jpg" alt="Golden Gown">
+                <img src="images/party2.jpg" alt="Golden Gown">
                 <h4>Golden Gown</h4>
                 <p>₹1100</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Golden Gown', 'party2.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="party1.jpg" alt="Silk Saree">
+                <img src="images/party1.jpg" alt="Silk Saree">
                 <h4>Leaf Theme Beautiful Dress</h4>
                 <p>₹850</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Leaf Theme Beautiful Dress', 'party1.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';" >
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="party4.jpg" alt="Silk Saree">
+                <img src="images/party4.jpg" alt="Silk Saree">
                 <h4>Navy Blue Net Dress</h4>
                 <p>₹850</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Navy Blue Net Dress', 'party4.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
@@ -582,50 +672,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         </div>
         <div class="products" data-category="anarkali">
             <div class="product">
-                <img src="an3.jpg" alt="Elegant Anarkali Set">
+                <img src="images/an3.jpg" alt="Elegant Anarkali Set">
                 <h4>Elegant Anarkali Set</h4>
                 <p>₹600</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Elegant Anarkali Set', 'an3.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="an2.jpg" alt="Blue Anarkali">
+                <img src="images/an2.jpg" alt="Blue Anarkali">
                 <h4>Blue Anarkali</h4>
                 <p>₹700</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Blue Anarkali', 'an2.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="an1.jpg" alt="Silk Saree">
+                <img src="images/an1.jpg" alt="Silk Saree">
                 <h4>Green Anarkali</h4>
                 <p>₹850</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Green Anarkali', 'an1.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
             <div class="product">
-                <img src="an4.jpg" alt="Silk Saree">
+                <img src="images/an4.jpg" alt="Silk Saree">
                 <h4>Full Sleeves Anarkali</h4>
                 <p>₹850</p>
-                <button 
-                    onclick="openModal('Classy Lehengas', 'len3.jpg')" 
+                <button onclick="openModal('Full Sleeves Anarkali', 'an4.jpg')"
                     style="margin-top: 10px; padding: 10px 20px; background: #333; color: #fff; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s;"
-                    onmouseover="this.style.background='#444';"
-                    onmouseout="this.style.background='#333';">
+                    onmouseover="this.style.background='#444';" onmouseout="this.style.background='#333';">
                     Rent Now
                 </button>
             </div>
@@ -878,6 +960,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>
