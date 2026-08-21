@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — Stylique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">STYLIQUE</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html" id="nav-login"><i class="fa fa-sign-in-alt" style="font-size:22px"></i></a></li>
+        <li><a href="myaccount.html" id="nav-account" style="display:none"><i class="fa fa-user" style="font-size:22px"></i></a></li>
+        <li><button id="nav-logout" style="display:none;background:none;border:none;cursor:pointer;font-size:22px"><i class="fa fa-sign-out-alt"></i></button></li>
+        <li>
+          <a href="cart.html" class="cart-wrap">
+            <i class="fa fa-shopping-cart" style="font-size:22px"></i>
+            <span class="cart-badge">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="account-container">
+    <h2>My Account</h2>
+    <p class="email-tag" id="userEmail">Loading...</p>
+
+    <h3 style="margin-bottom:16px">Order History</h3>
+
+    <!-- Orders injected here -->
+    <div id="ordersList">
+      <p style="color:#888">Loading your orders...</p>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-bottom">© 2025 Stylique</p>
+  </footer>
+
+  <script type="module">
+    import { auth } from './js/auth.js';
+    import { updateCartBadge } from './js/cart.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    updateCartBadge();
+
+    // Wait for Firebase to resolve auth state before fetching orders
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        // Not logged in — redirect to login
+        alert('Please log in to view your account.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      document.getElementById('userEmail').textContent = user.email;
+
+      try {
+        const res    = await fetch(`/api/orders/${user.uid}`);
+        const orders = await res.json();
+
+        const listEl = document.getElementById('ordersList');
+
+        if (orders.length === 0) {
+          listEl.innerHTML = `
+            <div style="text-align:center;padding:40px;color:#888">
+              <i class="fa fa-box-open" style="font-size:40px;margin-bottom:12px;display:block"></i>
+              <p>No orders yet. <a href="her.html" style="color:#800020">Start renting!</a></p>
+            </div>`;
+          return;
+        }
+
+        listEl.innerHTML = orders.map(order => `
+          <div class="order-card">
+            <div class="order-meta">
+              <span>Order ID: ${order._id}</span>
+              <span>${new Date(order.createdAt).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}</span>
+              <span class="status-badge status-confirmed">${order.status}</span>
+            </div>
+
+            ${order.items.map(item => `
+              <div class="order-item">
+                <img src="images/${item.image}" alt="${item.title}" />
+                <div>
+                  <p><strong>${item.title}</strong></p>
+                  <p>Size: ${item.size} &nbsp;|&nbsp; ₹${item.price.toLocaleString('en-IN')}</p>
+                  <p style="font-size:13px;color:#888">${item.startDate} → ${item.returnDate}</p>
+                </div>
+              </div>
+            `).join('')}
+
+            <p class="order-total">Total: ₹${order.total.toLocaleString('en-IN')}</p>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        document.getElementById('ordersList').innerHTML =
+          '<p style="color:red">Failed to load orders. Is the backend running?</p>';
+      }
+    });
+  </script>
+
+  <!-- auth.js imported above via named import, still need it for nav state -->
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Stylique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">STYLIQUE</a>
+  </header>
+
+  <div class="auth-page">
+    <div class="auth-box">
+      <h2>Create Account</h2>
+      <p id="auth-error" class="auth-error"></p>
+
+      <form id="registerForm">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="you@email.com" required />
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Min. 6 characters" required minlength="6" />
+
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+
+      <div class="switch">
+        <p>Already registered? <a href="login.html">Log in here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

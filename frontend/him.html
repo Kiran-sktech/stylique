@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Him — Stylique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Override banner image for him page */
+    .page-banner {
+      background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+                        url('images/him.webp');
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">STYLIQUE</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li>
+          <select onchange="location = this.value">
+            <option value="" disabled selected>Categories</option>
+            <option value="her.html">For Her</option>
+            <option value="him.html" selected>For Him</option>
+          </select>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" id="nav-login"><i class="fa fa-sign-in-alt" style="font-size:22px"></i></a></li>
+        <li><a href="myaccount.html" id="nav-account" style="display:none"><i class="fa fa-user" style="font-size:22px"></i></a></li>
+        <li><button id="nav-logout" style="display:none;background:none;border:none;cursor:pointer;font-size:22px"><i class="fa fa-sign-out-alt"></i></button></li>
+        <li>
+          <a href="cart.html" class="cart-wrap">
+            <i class="fa fa-shopping-cart" style="font-size:22px"></i>
+            <span class="cart-badge">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-banner">
+    <h1>Men's Collection</h1>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="active" onclick="filterCategory('all', this)">All</button>
+    <button onclick="filterCategory('wedding', this)">Wedding</button>
+    <button onclick="filterCategory('engagement', this)">Engagement</button>
+    <button onclick="filterCategory('reception', this)">Reception</button>
+    <button onclick="filterCategory('party', this)">Party</button>
+  </div>
+
+  <div class="products-section">
+    <div class="section-header">
+      <h2 id="section-title">All Collections</h2>
+      <div>
+        <label style="font-size:14px;margin-right:8px">Sort:</label>
+        <select id="sortSelect" onchange="sortProducts(this.value)">
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A–Z</option>
+        </select>
+      </div>
+    </div>
+    <div class="products" id="productsGrid"></div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="" />
+      <h3 id="modalTitle"></h3>
+      <p style="color:#800020;font-weight:700;margin-bottom:14px" id="modalPrice"></p>
+
+      <label>Size</label>
+      <select id="modalSize">
+        <option>S</option><option selected>M</option>
+        <option>L</option><option>XL</option><option>XXL</option>
+      </select>
+
+      <label>Rental Start Date</label>
+      <input type="date" id="modalStart" oninput="autoReturnDate()" />
+
+      <label>Return Date (auto — 3 days)</label>
+      <input type="date" id="modalReturn" readonly />
+
+      <button class="btn" style="width:100%" onclick="addToCartFromModal()">
+        <i class="fa fa-cart-plus"></i> Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <a href="cancellation.html"><h4>Cancellation Policy</h4></a>
+      <a href="return.html"><h4>Return Policy</h4></a>
+      <a href="terms.html"><h4>Terms &amp; Conditions</h4></a>
+      <a href="privacy.html"><h4>Privacy Policy</h4></a>
+    </div>
+    <p class="footer-bottom">© 2025 Stylique</p>
+  </footer>
+
+  <script type="module">
+    import { addToCart, updateCartBadge, calcReturnDate } from './js/cart.js';
+
+    let allProducts = [];
+    let activeCategory = 'all';
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('/api/products/him');
+        allProducts = await res.json();
+        renderProducts(allProducts);
+      } catch (err) {
+        document.getElementById('productsGrid').innerHTML =
+          '<p style="color:red">Failed to load products. Is the backend running?</p>';
+      }
+    }
+
+    function renderProducts(products) {
+      const grid = document.getElementById('productsGrid');
+      if (products.length === 0) { grid.innerHTML = '<p>No products found.</p>'; return; }
+      grid.innerHTML = products.map(p => `
+        <div class="product-card">
+          <img src="images/${p.image}" alt="${p.title}" loading="lazy" />
+          <div class="card-body">
+            <h4>${p.title}</h4>
+            <p class="price">₹${p.price.toLocaleString('en-IN')}</p>
+            <button class="btn" onclick="openModal('${p.title}','${p.image}',${p.price},'${p.category}')">Rent Now</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.filterCategory = (cat, btn) => {
+      activeCategory = cat;
+      document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filtered = cat === 'all' ? allProducts : allProducts.filter(p => p.category === cat);
+      document.getElementById('section-title').textContent = cat === 'all' ? 'All Collections' : btn.textContent;
+      renderProducts(filtered);
+    };
+
+    window.sortProducts = (value) => {
+      const base = activeCategory === 'all' ? [...allProducts] : allProducts.filter(p => p.category === activeCategory);
+      if (value === 'price-asc')  base.sort((a, b) => a.price - b.price);
+      if (value === 'price-desc') base.sort((a, b) => b.price - a.price);
+      if (value === 'name-asc')   base.sort((a, b) => a.title.localeCompare(b.title));
+      renderProducts(base);
+    };
+
+    let modalData = {};
+
+    window.openModal = (title, image, price, category) => {
+      modalData = { title, image, price, category };
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalImg').src = `images/${image}`;
+      document.getElementById('modalPrice').textContent = `₹${price.toLocaleString('en-IN')} / 3 days`;
+      document.getElementById('modalStart').min = new Date().toISOString().split('T')[0];
+      document.getElementById('modalStart').value = '';
+      document.getElementById('modalReturn').value = '';
+      document.getElementById('modalOverlay').classList.add('open');
+    };
+
+    window.closeModal = () => document.getElementById('modalOverlay').classList.remove('open');
+
+    window.autoReturnDate = () => {
+      const start = document.getElementById('modalStart').value;
+      if (start) document.getElementById('modalReturn').value = calcReturnDate(start, 3);
+    };
+
+    window.addToCartFromModal = () => {
+      const start = document.getElementById('modalStart').value;
+      if (!start) { alert('Please select a rental start date.'); return; }
+      addToCart({
+        title: modalData.title, image: modalData.image,
+        price: modalData.price, category: modalData.category,
+        size: document.getElementById('modalSize').value,
+        startDate: start,
+        returnDate: document.getElementById('modalReturn').value
+      });
+      closeModal();
+      alert(`✅ "${modalData.title}" added to cart!`);
+      updateCartBadge();
+    };
+
+    document.getElementById('modalOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    });
+
+    loadProducts();
+    updateCartBadge();
+  </script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>
