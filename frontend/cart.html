@@ -59,15 +59,18 @@
     <p class="footer-bottom">© 2025 Stylique</p>
   </footer>
 
+  <!-- Razorpay checkout script — loads the payment popup -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <script type="module">
     import { getCart, removeFromCart, clearCart, getCartTotal, updateCartBadge } from './js/cart.js';
     import { auth } from './js/auth.js';
 
     function renderCart() {
-      const cart    = getCart();
-      const listEl  = document.getElementById('cartItemsList');
+      const cart      = getCart();
+      const listEl    = document.getElementById('cartItemsList');
       const summaryEl = document.getElementById('cartSummary');
-      const emptyEl = document.getElementById('emptyMsg');
+      const emptyEl   = document.getElementById('emptyMsg');
 
       updateCartBadge();
 
@@ -105,7 +108,7 @@
       renderCart();
     };
 
-    // Place Order — sends cart to backend, requires Firebase login
+    // STEP 1 — Create Razorpay order on backend, then open payment popup
     window.placeOrder = async () => {
       const user = auth.currentUser;
 
@@ -117,31 +120,74 @@
 
       const cart  = getCart();
       const total = getCartTotal();
-
       if (cart.length === 0) { alert('Your cart is empty.'); return; }
 
       try {
-        const res = await fetch('/api/orders', {
-          method: 'POST',
+        // Call backend to create Razorpay order
+        const res  = await fetch('/api/orders/create-razorpay-order', {
+          method:  'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            userId:    user.uid,       // Firebase UID
-            userEmail: user.email,
-            items:     cart,
-            total
-          })
+          body:    JSON.stringify({ total })
+        });
+        const data = await res.json();
+        if (!data.success) { alert('Payment init failed. Try again.'); return; }
+
+        // STEP 2 — Open Razorpay popup
+        const options = {
+          key:         'rzp_test_TU5PP2WfMyzU6X', // your public key ID
+          amount:      data.order.amount,           // in paise from backend
+          currency:    'INR',
+          name:        'Stylique',
+          description: 'Clothing Rental Payment',
+          order_id:    data.order.id,               // Razorpay order ID from backend
+          prefill: {
+            email: user.email
+          },
+          theme: { color: '#800020' },
+
+          // STEP 3 — Called automatically when payment succeeds
+          handler: async (response) => {
+            try {
+              const verifyRes = await fetch('/api/orders/verify-and-save', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify({
+                  razorpay_order_id:   response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature:  response.razorpay_signature,
+                  userId:    user.uid,
+                  userEmail: user.email,
+                  items:     cart,
+                  total
+                })
+              });
+
+              const verifyData = await verifyRes.json();
+
+              if (verifyData.success) {
+                clearCart();
+                renderCart();
+                alert('🎉 Payment successful! Order confirmed.');
+                window.location.href = 'myaccount.html';
+              } else {
+                alert('Payment verification failed. Contact support.');
+              }
+            } catch (err) {
+              console.error(err);
+              alert('Error saving order. Contact support with payment ID: ' + response.razorpay_payment_id);
+            }
+          }
+        };
+
+        const rzp = new window.Razorpay(options);
+
+        // Handle payment popup close / failure
+        rzp.on('payment.failed', (response) => {
+          alert('Payment failed: ' + response.error.description);
         });
 
-        const data = await res.json();
+        rzp.open();
 
-        if (data.success) {
-          clearCart();
-          renderCart();
-          alert('🎉 Order placed successfully! Check My Account for details.');
-          window.location.href = 'myaccount.html';
-        } else {
-          alert('Failed to place order. Please try again.');
-        }
       } catch (err) {
         console.error(err);
         alert('Server error. Please try again later.');

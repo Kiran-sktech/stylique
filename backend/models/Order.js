@@ -17,6 +17,7 @@ const orderSchema = new mongoose.Schema({
   userEmail: { type: String, required: true },
   items:     [orderItemSchema],
   total:     { type: Number, required: true },
+  paymentId: { type: String },   //razorpay payment ID
   status:    { type: String, default: 'confirmed' }, // confirmed → returned
   createdAt: { type: Date, default: Date.now }
 });
