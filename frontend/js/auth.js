@@ -22,18 +22,31 @@ const auth = getAuth(app);
 window.getCurrentUser = () => auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
-  const loginLink   = document.getElementById('nav-login');
+  const loginLink = document.getElementById('nav-login');
   const accountLink = document.getElementById('nav-account');
-  const logoutBtn   = document.getElementById('nav-logout');
+  const logoutBtn = document.getElementById('nav-logout');
+
+  const mobileLogin = document.getElementById('mobile-nav-login');
+  const mobileAccount = document.getElementById('mobile-nav-account');
+  const mobileLogout = document.getElementById('mobile-nav-logout');
 
   if (user) {
-    if (loginLink)   loginLink.style.display   = 'none';
+    if (loginLink) loginLink.style.display = 'none';
     if (accountLink) accountLink.style.display = 'inline';
-    if (logoutBtn)   logoutBtn.style.display   = 'inline';
+    if (logoutBtn) logoutBtn.style.display = 'inline';
+
+    if (mobileLogin) mobileLogin.style.display = 'none';
+    if (mobileAccount) mobileAccount.style.display = 'block';
+    if (mobileLogout) mobileLogout.style.display = 'block';
+
   } else {
-    if (loginLink)   loginLink.style.display   = 'inline';
+    if (loginLink) loginLink.style.display = 'inline';
     if (accountLink) accountLink.style.display = 'none';
-    if (logoutBtn)   logoutBtn.style.display   = 'none';
+    if (logoutBtn) logoutBtn.style.display = 'none';
+
+    if (mobileLogin) mobileLogin.style.display = 'block';
+    if (mobileAccount) mobileAccount.style.display = 'none';
+    if (mobileLogout) mobileLogout.style.display = 'none';
   }
 });
 
@@ -71,7 +84,9 @@ if (loginForm) {
 
 const logoutBtn = document.getElementById('nav-logout');
 if (logoutBtn) {
-  logoutBtn.addEventListener('click', async () => {
+  logoutBtn.addEventListener('click', async (e) => {
+     e.preventDefault();
+     
     await signOut(auth);
     window.location.href = 'index.html';
   });
@@ -89,5 +104,47 @@ function friendlyError(code) {
   };
   return map[code] || 'Something went wrong. Please try again.';
 }
+
+// ===== MOBILE SIDEBAR =====
+
+const menuToggle = document.getElementById('menu-toggle');
+const mobileSidebar = document.getElementById('mobile-sidebar');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+const sidebarClose = document.getElementById('sidebar-close');
+
+function openSidebar() {
+  mobileSidebar.classList.add('open');
+  sidebarOverlay.classList.add('open');
+}
+
+function closeSidebar() {
+  mobileSidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('open');
+}
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', openSidebar);
+}
+
+if (sidebarClose) {
+  sidebarClose.addEventListener('click', closeSidebar);
+}
+
+if (sidebarOverlay) {
+  sidebarOverlay.addEventListener('click', closeSidebar);
+}
+
+const mobileLogoutLink = document.getElementById('mobile-logout-link');
+
+if (mobileLogoutLink) {
+  mobileLogoutLink.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    await signOut(auth);
+    closeSidebar();
+    window.location.href = 'index.html';
+  });
+}
+
 
 export { auth };

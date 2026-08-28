@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,50 +12,121 @@
     /* ===== HOMEPAGE SPECIFIC ===== */
 
     /* Hero */
-    .hero { position: relative; width: 100%; }
-    .hero img { width: 100%; display: block; max-height: 88vh; object-fit: cover; }
-    .hero-text {
-      position: absolute; top: 50%; right: 6%;
-      transform: translateY(-50%);
-      color: #fff; text-align: right; max-width: 420px;
-      text-shadow: 0 2px 10px rgba(0,0,0,.6);
+    .hero {
+      position: relative;
+      width: 100%;
     }
-    .hero-text h1 { font-size: 2.8em; margin-bottom: 12px; line-height: 1.2; }
-    .hero-text p  { font-size: 1.1em; margin-bottom: 20px; opacity: .9; }
-    .hero-text a  {
-      display: inline-block; padding: 12px 30px;
-      background: #800020; color: #fff;
-      border-radius: 6px; text-decoration: none;
-      font-weight: 600; font-size: 16px;
+
+    .hero img {
+      width: 100%;
+      display: block;
+      max-height: 88vh;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      right: 4%;
+      transform: translateY(-50%);
+      color: #fff;
+      text-align: right;
+      max-width: 420px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .6);
+    }
+
+    .hero-text h1 {
+      font-size: 2.8em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      opacity: .9;
+    }
+
+    .hero-text a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #800020;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
       transition: background .3s;
     }
-    .hero-text a:hover { background: #600018; }
+
+    .hero-text a:hover {
+      background: #600018;
+    }
 
     /* Gender cards */
     .gender-section {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 10px; padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
     }
-    .gender-card { position: relative; overflow: hidden; border-radius: 8px; cursor: pointer; }
-    .gender-card img { width: 100%; height: 70vh; object-fit: cover; display: block; transition: transform .4s; }
-    .gender-card:hover img { transform: scale(1.04); }
+
+    .gender-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .gender-card img {
+      width: 100%;
+      height: 70vh;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+
+    .gender-card:hover img {
+      transform: scale(1.04);
+    }
+
     .gender-card .overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,.3);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       transition: background .3s;
     }
-    .gender-card:hover .overlay { background: rgba(0,0,0,.45); }
-    .gender-card span { font-size: 3em; font-weight: 700; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+
+    .gender-card:hover .overlay {
+      background: rgba(0, 0, 0, .45);
+    }
+
+    .gender-card span {
+      font-size: 3em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .6);
+    }
+
     .gender-card a.shop-btn {
-      margin-top: 14px; padding: 10px 28px;
-      background: #800020; color: #fff;
-      border-radius: 6px; text-decoration: none;
-      font-weight: 600; font-size: 15px;
+      margin-top: 14px;
+      padding: 10px 28px;
+      background: #800020;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
       transition: background .3s;
     }
-    .gender-card a.shop-btn:hover { background: #600018; }
+
+    .gender-card a.shop-btn:hover {
+      background: #600018;
+    }
 
     /* How it works */
     .how-it-works {
@@ -62,68 +134,162 @@
       background: #fff;
       text-align: center;
     }
-    .how-it-works h2 { font-size: 2em; margin-bottom: 10px; color: #333; }
-    .how-it-works .subtitle { color: #777; margin-bottom: 50px; font-size: 15px; }
+
+    .how-it-works h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .how-it-works .subtitle {
+      color: #777;
+      margin-bottom: 50px;
+      font-size: 15px;
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px; max-width: 900px; margin: 0 auto;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
     }
+
     .step-card {
       padding: 30px 20px;
       border-radius: 12px;
       background: #f9f9f9;
       transition: transform .3s, box-shadow .3s;
     }
-    .step-card:hover { transform: translateY(-6px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
-    .step-card .icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: #800020; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin: 0 auto 18px;
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
     }
-    .step-card h3 { font-size: 17px; margin-bottom: 8px; }
-    .step-card p  { font-size: 14px; color: #666; line-height: 1.6; }
+
+    .step-card .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #800020;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 18px;
+    }
+
+    .step-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
 
     /* Featured products */
     .featured {
       padding: 70px 40px;
       background: #f5f5f5;
     }
-    .featured h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
-    .featured .subtitle { text-align: center; color: #777; margin-bottom: 40px; font-size: 15px; }
+
+    .featured h2 {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .featured .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+
     .featured-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px; max-width: 1100px; margin: 0 auto 36px;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto 36px;
     }
+
     .featured-card {
-      background: #fff; border-radius: 10px;
-      overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.07);
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .07);
       transition: transform .3s;
     }
-    .featured-card:hover { transform: translateY(-4px); }
-    .featured-card img { width: 100%; height: 280px; object-fit: contain; padding: 10px; background: #fafafa; }
-    .featured-card .card-body { padding: 14px; text-align: center; }
-    .featured-card h4 { font-size: 14px; margin-bottom: 6px; }
-    .featured-card .price { color: #800020; font-weight: 700; margin-bottom: 10px; font-size: 15px; }
+
+    .featured-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .featured-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+      padding: 10px;
+      background: #fafafa;
+    }
+
+    .featured-card .card-body {
+      padding: 14px;
+      text-align: center;
+    }
+
+    .featured-card h4 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .featured-card .price {
+      color: #800020;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
     .featured-card a {
-      display: inline-block; padding: 8px 20px;
-      background: #333; color: #fff;
-      border-radius: 6px; text-decoration: none;
-      font-size: 13px; font-weight: 600;
+      display: inline-block;
+      padding: 8px 20px;
+      background: #333;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
       transition: background .3s;
     }
-    .featured-card a:hover { background: #555; }
-    .featured .center-btn { text-align: center; }
+
+    .featured-card a:hover {
+      background: #555;
+    }
+
+    .featured .center-btn {
+      text-align: center;
+    }
+
     .featured .center-btn a {
-      display: inline-block; padding: 12px 36px;
-      background: #800020; color: #fff;
-      border-radius: 6px; text-decoration: none;
-      font-weight: 600; font-size: 15px;
+      display: inline-block;
+      padding: 12px 36px;
+      background: #800020;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
       transition: background .3s;
     }
-    .featured .center-btn a:hover { background: #600018; }
+
+    .featured .center-btn a:hover {
+      background: #600018;
+    }
 
     /* Why choose us */
     .why-us {
@@ -131,17 +297,47 @@
       background: #fff;
       text-align: center;
     }
-    .why-us h2 { font-size: 2em; margin-bottom: 10px; }
-    .why-us .subtitle { color: #777; margin-bottom: 50px; font-size: 15px; }
+
+    .why-us h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .why-us .subtitle {
+      color: #777;
+      margin-bottom: 50px;
+      font-size: 15px;
+    }
+
     .why-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px; max-width: 1000px; margin: 0 auto;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .why-card { padding: 30px 20px; }
-    .why-card i { font-size: 36px; color: #800020; margin-bottom: 16px; display: block; }
-    .why-card h3 { font-size: 17px; margin-bottom: 8px; }
-    .why-card p  { font-size: 14px; color: #666; line-height: 1.6; }
+
+    .why-card {
+      padding: 30px 20px;
+    }
+
+    .why-card i {
+      font-size: 36px;
+      color: #800020;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .why-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
 
     /* Testimonials */
     .testimonials {
@@ -149,80 +345,223 @@
       background: #a9ba9d;
       text-align: center;
     }
-    .testimonials h2 { font-size: 2em; margin-bottom: 10px; }
-    .testimonials .subtitle { color: #333; margin-bottom: 50px; font-size: 15px; }
+
+    .testimonials h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .testimonials .subtitle {
+      color: #333;
+      margin-bottom: 50px;
+      font-size: 15px;
+    }
+
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px; max-width: 1000px; margin: 0 auto;
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
+
     .testi-card {
-      background: #fff; border-radius: 12px;
-      padding: 28px 24px; text-align: left;
-      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: left;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
     }
-    .testi-card .stars { color: #f4a261; margin-bottom: 12px; font-size: 16px; }
-    .testi-card p { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
-    .testi-card .author { font-weight: 700; font-size: 14px; color: #333; }
-    .testi-card .occasion { font-size: 12px; color: #888; }
+
+    .testi-card .stars {
+      color: #f4a261;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .testi-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testi-card .author {
+      font-weight: 700;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .testi-card .occasion {
+      font-size: 12px;
+      color: #888;
+    }
 
     /* Banner strip */
     .banner-strip {
-      background: #800020; color: #fff;
+      background: #800020;
+      color: #fff;
       padding: 20px 40px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 16px; text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
     }
-    .banner-strip p { font-size: 16px; font-weight: 600; }
+
+    .banner-strip p {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
     .banner-strip a {
-      padding: 10px 24px; background: #fff;
-      color: #800020; border-radius: 6px;
-      text-decoration: none; font-weight: 700;
-      white-space: nowrap; transition: opacity .3s;
+      padding: 10px 24px;
+      background: #fff;
+      color: #800020;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: opacity .3s;
     }
-    .banner-strip a:hover { opacity: .85; }
+
+    .banner-strip a:hover {
+      opacity: .85;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hero-text { right: 2%; max-width: 260px; }
-      .hero-text h1 { font-size: 1.6em; }
-      .gender-section { grid-template-columns: 1fr; }
-      .gender-card img { height: 50vh; }
-      .how-it-works, .featured, .why-us, .testimonials { padding: 50px 20px; }
-      .banner-strip { flex-direction: column; }
+      .hero-text {
+        right: 2%;
+        max-width: 260px;
+      }
+
+      .hero-text h1 {
+        font-size: 1.6em;
+      }
+
+      .gender-section {
+        grid-template-columns: 1fr;
+      }
+
+      .gender-card img {
+        height: 50vh;
+      }
+
+      .how-it-works,
+      .featured,
+      .why-us,
+      .testimonials {
+        padding: 50px 20px;
+      }
+
+      .banner-strip {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <a href="index.html" class="logo">STYLIQUE</a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li>
-          <select onchange="location = this.value">
-            <option value="" disabled selected>Categories</option>
-            <option value="her.html">For Her</option>
-            <option value="him.html">For Him</option>
-          </select>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html" id="nav-login"><i class="fa fa-sign-in-alt" style="font-size:22px"></i></a></li>
-        <li><a href="myaccount.html" id="nav-account" style="display:none"><i class="fa fa-user" style="font-size:22px"></i></a></li>
-        <li><button id="nav-logout" style="display:none;background:none;border:none;cursor:pointer;font-size:22px"><i class="fa fa-sign-out-alt"></i></button></li>
-        <li>
-          <a href="cart.html" class="cart-wrap">
-            <i class="fa fa-shopping-cart" style="font-size:22px"></i>
-            <span class="cart-badge">0</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+ <!-- ===== HEADER ===== -->
+<header>
+  <a href="index.html" class="logo">STYLIQUE</a>
 
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="about.html">About Us</a></li>
+
+      <li>
+        <select onchange="location = this.value">
+          <option value="" disabled selected>Categories</option>
+          <option value="her.html">For Her</option>
+          <option value="him.html">For Him</option>
+        </select>
+      </li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+      <li id="nav-login">
+        <a href="login.html">Login</a>
+      </li>
+
+      <li id="nav-logout" style="display:none;">
+        <a href="#">Log Out</a>
+      </li>
+
+      <li id="nav-account" style="display:none;">
+        <a href="myaccount.html">
+          <i class="fa fa-user" style="font-size:22px"></i>
+        </a>
+      </li>
+
+      <li>
+        <a href="cart.html" class="cart-wrap">
+          <i class="fa fa-shopping-cart" style="font-size:22px"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button class="menu-toggle" id="menu-toggle">
+    <i class="fa fa-bars"></i>
+  </button>
+</header>
+
+<!-- ===== MOBILE SIDEBAR ===== -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="mobile-sidebar" id="mobile-sidebar">
+
+  <div class="sidebar-header">
+    <span>MENU</span>
+    <button id="sidebar-close">&times;</button>
+  </div>
+
+  <ul>
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+
+    <li>
+      <a href="about.html">About Us</a>
+    </li>
+
+    <li class="sidebar-category">
+      <span>Categories</span>
+      <a href="her.html">For Her</a>
+      <a href="him.html">For Him</a>
+    </li>
+
+    <li>
+      <a href="contact.html">Contact</a>
+    </li>
+
+    <li id="mobile-nav-login">
+      <a href="login.html">Login</a>
+    </li>
+
+    <li id="mobile-nav-account" style="display:none;">
+      <a href="myaccount.html">My Account</a>
+    </li>
+
+    <li>
+      <a href="cart.html">Cart</a>
+    </li>
+
+    <li id="mobile-nav-logout" style="display:none;">
+      <a href="#" id="mobile-logout-link">Log Out</a>
+    </li>
+  </ul>
+
+</aside>
   <!-- ===== HERO ===== -->
   <section class="hero">
     <img src="images/main.webp" alt="Stylique Hero" />
@@ -235,14 +574,14 @@
 
   <!-- ===== FOR HER / FOR HIM ===== -->
   <section class="gender-section">
-    <div  class="gender-card">
+    <div class="gender-card">
       <img src="images/her.jpg" alt="For Her" />
       <div class="overlay">
         <!-- <span>For Her</span> -->
         <a href="her.html" class="shop-btn">Explore Collection</a>
       </div>
     </div>
-    <div  class="gender-card">
+    <div class="gender-card">
       <img src="images/1him.jpg" alt="For Him" />
       <div class="overlay">
         <!-- <span>For Him</span> -->
@@ -367,19 +706,22 @@
     <div class="testi-grid">
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>"The lehenga was absolutely stunning and arrived perfectly pressed. Got so many compliments at the wedding. Will definitely rent again!"</p>
+        <p>"The lehenga was absolutely stunning and arrived perfectly pressed. Got so many compliments at the wedding.
+          Will definitely rent again!"</p>
         <div class="author">Priya S.</div>
         <div class="occasion">Wedding Guest, Pune</div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★★</div>
-        <p>"Rented the sherwani for my brother's reception. The quality was amazing and saved us so much compared to buying. Pickup was seamless."</p>
+        <p>"Rented the sherwani for my brother's reception. The quality was amazing and saved us so much compared to
+          buying. Pickup was seamless."</p>
         <div class="author">Rahul M.</div>
         <div class="occasion">Reception, Solapur</div>
       </div>
       <div class="testi-card">
         <div class="stars">★★★★☆</div>
-        <p>"Love the concept — why buy when you can rent? The saree collection is gorgeous. Delivery was on time and the outfit was spotless."</p>
+        <p>"Love the concept — why buy when you can rent? The saree collection is gorgeous. Delivery was on time and the
+          outfit was spotless."</p>
         <div class="author">Anjali K.</div>
         <div class="occasion">Festival Celebration, Mumbai</div>
       </div>
@@ -395,10 +737,22 @@
   <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-grid">
-      <a href="cancellation.html"><h4>Cancellation Policy</h4><p>Cancel within 24 hours.</p></a>
-      <a href="return.html"><h4>Return Policy</h4><p>Return within 3 days.</p></a>
-      <a href="terms.html"><h4>Terms &amp; Conditions</h4><p>Read our full terms.</p></a>
-      <a href="privacy.html"><h4>Privacy Policy</h4><p>Your data is protected.</p></a>
+      <a href="cancellation.html">
+        <h4>Cancellation Policy</h4>
+        <p>Cancel within 24 hours.</p>
+      </a>
+      <a href="return.html">
+        <h4>Return Policy</h4>
+        <p>Return within 3 days.</p>
+      </a>
+      <a href="terms.html">
+        <h4>Terms &amp; Conditions</h4>
+        <p>Read our full terms.</p>
+      </a>
+      <a href="privacy.html">
+        <h4>Privacy Policy</h4>
+        <p>Your data is protected.</p>
+      </a>
     </div>
     <p class="footer-bottom">© 2025 Stylique. All rights reserved.</p>
   </footer>
@@ -407,4 +761,5 @@
   <script type="module" src="js/cart.js"></script>
 
 </body>
+
 </html>

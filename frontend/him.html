@@ -17,33 +17,106 @@
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">STYLIQUE</a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li>
-          <select onchange="location = this.value">
-            <option value="" disabled selected>Categories</option>
-            <option value="her.html">For Her</option>
-            <option value="him.html" selected>For Him</option>
-          </select>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="login.html" id="nav-login"><i class="fa fa-sign-in-alt" style="font-size:22px"></i></a></li>
-        <li><a href="myaccount.html" id="nav-account" style="display:none"><i class="fa fa-user" style="font-size:22px"></i></a></li>
-        <li><button id="nav-logout" style="display:none;background:none;border:none;cursor:pointer;font-size:22px"><i class="fa fa-sign-out-alt"></i></button></li>
-        <li>
-          <a href="cart.html" class="cart-wrap">
-            <i class="fa fa-shopping-cart" style="font-size:22px"></i>
-            <span class="cart-badge">0</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <!-- ===== HEADER ===== -->
+<header>
+  <a href="index.html" class="logo">STYLIQUE</a>
 
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="about.html">About Us</a></li>
+
+      <li>
+        <select onchange="location = this.value">
+          <option value="" disabled selected>Categories</option>
+          <option value="her.html">For Her</option>
+          <option value="him.html" selected>For Him</option>
+        </select>
+      </li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+      <li id="nav-login">
+        <a href="login.html">Login</a>
+      </li>
+
+      <li id="nav-logout" style="display:none;">
+        <a href="#">Log Out</a>
+      </li>
+
+      <li id="nav-account" style="display:none;">
+        <a href="myaccount.html">
+          <i class="fa fa-user" style="font-size:22px"></i>
+        </a>
+      </li>
+
+      <li>
+        <a href="cart.html" class="cart-wrap">
+          <i class="fa fa-shopping-cart" style="font-size:22px"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <button class="menu-toggle" id="menu-toggle">
+    <i class="fa fa-bars"></i>
+  </button>
+</header>
+
+
+<!-- ===== MOBILE SIDEBAR ===== -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+<aside class="mobile-sidebar" id="mobile-sidebar">
+
+  <div class="sidebar-header">
+    <span>MENU</span>
+    <button id="sidebar-close">&times;</button>
+  </div>
+
+  <ul>
+
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+
+    <li>
+      <a href="about.html">About Us</a>
+    </li>
+
+    <li class="sidebar-category">
+      <span>Categories</span>
+      <a href="her.html">For Her</a>
+      <a href="him.html">For Him</a>
+    </li>
+
+    <li>
+      <a href="contact.html">Contact</a>
+    </li>
+
+    <li id="mobile-nav-login">
+      <a href="login.html">Login</a>
+    </li>
+
+    <li id="mobile-nav-account" style="display:none;">
+      <a href="myaccount.html">My Account</a>
+    </li>
+
+    <li>
+      <a href="cart.html">Cart</a>
+    </li>
+
+    <li id="mobile-nav-logout" style="display:none;">
+      <a href="#" id="mobile-logout-link">Log Out</a>
+    </li>
+
+  </ul>
+
+</aside>
   <div class="page-banner">
     <h1>Men's Collection</h1>
   </div>
